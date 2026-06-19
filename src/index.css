@@ -1,0 +1,174 @@
+/* ============================================================================
+   DyHuFu Petrol — Design System (Tailwind CSS v4)
+   ============================================================================
+   Tailwind v4 usa @import en lugar de @tailwind directives.
+   Variables CSS personalizadas para el tema de la app.
+   ============================================================================ */
+
+@import "tailwindcss";
+
+/* --------------------------------------------------------------------------
+   Custom Theme: DyHuFu Petrol Brand
+   -------------------------------------------------------------------------- */
+@theme {
+  /* Brand Colors - Fuel-station inspired palette */
+  --color-petrol-50: #eef8f4;
+  --color-petrol-100: #d5efe4;
+  --color-petrol-200: #aee0cc;
+  --color-petrol-300: #79c9ae;
+  --color-petrol-400: #47ad8b;
+  --color-petrol-500: #2a9272;
+  --color-petrol-600: #1d755c;
+  --color-petrol-700: #185e4b;
+  --color-petrol-800: #154b3d;
+  --color-petrol-900: #123e33;
+  --color-petrol-950: #0a231d;
+
+  /* Amber accent for alerts / fuel-related UI */
+  --color-fuel-50: #fff9eb;
+  --color-fuel-100: #ffefc6;
+  --color-fuel-200: #ffdc88;
+  --color-fuel-300: #ffc44a;
+  --color-fuel-400: #ffad20;
+  --color-fuel-500: #f98c07;
+  --color-fuel-600: #dd6702;
+  --color-fuel-700: #b74606;
+  --color-fuel-800: #94350c;
+  --color-fuel-900: #7a2c0d;
+  --color-fuel-950: #461402;
+
+  /* Danger (for critical stock / suspended clients) */
+  --color-danger-500: #ef4444;
+  --color-danger-600: #dc2626;
+
+  /* Surface / Dark mode base */
+  --color-surface-50: #f8fafc;
+  --color-surface-100: #f1f5f9;
+  --color-surface-200: #e2e8f0;
+  --color-surface-300: #cbd5e1;
+  --color-surface-400: #94a3b8;
+  --color-surface-500: #64748b;
+  --color-surface-600: #475569;
+  --color-surface-700: #334155;
+  --color-surface-800: #1e293b;
+  --color-surface-900: #0f172a;
+  --color-surface-950: #020617;
+
+  /* Font families */
+  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06);
+  --shadow-card-hover: 0 4px 12px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.08);
+  --shadow-sidebar: 4px 0 16px -4px rgb(0 0 0 / 0.12);
+  --shadow-glow-petrol: 0 0 20px rgb(42 146 114 / 0.25);
+}
+
+/* --------------------------------------------------------------------------
+   Global Base Styles
+   -------------------------------------------------------------------------- */
+html {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-surface-950);
+  color: var(--color-surface-100);
+  min-height: 100dvh;
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+/* --------------------------------------------------------------------------
+   Scrollbar Styling (Webkit)
+   -------------------------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface-900);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-600);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-surface-500);
+}
+
+/* --------------------------------------------------------------------------
+   Animations
+   -------------------------------------------------------------------------- */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 8px rgb(42 146 114 / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgb(42 146 114 / 0.6);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes count-up {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out both;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.3s ease-out both;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-count-up {
+  animation: count-up 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* Staggered animation delays for cards */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.10s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.20s; }
